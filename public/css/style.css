@@ -5,6 +5,8 @@ body {
     margin: 0;
     padding: 0;
     font-size: 1.2rem;
+    height:100%;
+    margin:0;
 }
 
 a {
@@ -34,11 +36,23 @@ a {
 }
 
 .main {
-    padding: 1rem;
+    height:100%;
+    display:flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -webkit-align-content: stretch;
+    align-content: stretch;
 }
 
 .main--home {
     text-align: center;
+    flex-direction: column;
+}
+
+.logo {
+    width: 50px;
+    margin: .75rem;
 }
 
 .login-button {
@@ -52,4 +66,18 @@ a {
     font-size: 0.8em;
     font-weight: bold;
     margin: 0 auto;
+}
+
+.container--content {
+    background-color:#8216FC;
+    width: 75%;
+    padding: 1rem;
+}
+
+.container--sidebar {
+    background-color: #380078;
+    -webkit-flex: 1;
+    flex:1;
+    position:relative;
+    padding: 1rem;
 }

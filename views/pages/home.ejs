@@ -15,7 +15,7 @@
     <div class="container--content">
 
         <div class="jumbotron">
-            <h1>Welcome,></h1>
+            <h1>Welcome, <span><%= username %></span></h1>
 
         </div>
 
@@ -26,7 +26,11 @@
             <h3>All users</h3>
 
             <ul>
+                <% for (var i=0; i < users.length; i++) { %>
 
+                <li><a href="/user/<%= users[i].user_name  %>"><%= users[i].user_name  %></a></li>
+
+                <% }; %>
             </ul>
 
         </div>
