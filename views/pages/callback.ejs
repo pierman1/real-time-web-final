@@ -1,0 +1,44 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main class="main">
+    <div class="row">
+        <div class="col-sm-8">
+
+            <div class="jumbotron">
+                <h1>Welcome, <span><%= username %></span></h1>
+
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+
+            <div class="well">
+                <h3>Active users</h3>
+
+                <ul>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
