@@ -4,8 +4,7 @@
   "description": "Real Time App",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "node index.js"
+    "start": "node server.js"
   },
   "author": "Pierre Bleeker",
   "license": "MIT",
