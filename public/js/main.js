@@ -1,26 +1,65 @@
 (function () {
 
+    console.log('skript');
+
     var socket = io();
 
-    socket.on('current playing', function (song) {
+    var usersList = document.querySelector('#users-list');
+    console.log(usersList);
 
-        console.log(song);
+    socket.on('new user', function (users) {
+
+        usersList.innerHTML = "";
+
+        for(i=0;i<users.length;i++) {
+
+            var user = document.createElement('li');
+            var userLink = document.createElement('a');
+
+
+            console.log(users[i].user_name);
+            userLink.innerHTML = users[i].user_name;
+            userLink.href = '/user/' + users[i].user_name;
+
+            user.appendChild(userLink);
+
+            console.log(user);
+
+            usersList.appendChild(user);
+
+        }
 
     });
 
-    socket.on('show users', function (users) {
 
-        console.log(users);
+    var userPlaylist = document.querySelector('#play-lists');
+    console.log(userPlaylist);
+
+    socket.on('user playlists', function (albums) {
+
+        console.log(albums);
+
+        userPlaylist.innerHTML = "";
+
+        for(i=0;i<albums.length;i++) {
+
+            console.log(albums[i].name);
+
+            var album = document.createElement('li');
+            var albumLink = document.createElement('a');
+
+
+            // console.log(users[i].name);
+            albumLink.innerHTML = albums[i].name;
+            albumLink.href = '/user/' + albums[i].name;
+            album.appendChild(albumLink);
+
+            console.log(album);
+
+            userPlaylist.appendChild(album);
+
+        }
 
     });
-
-    var logoutButton = document.querySelector('#logout');
-
-    logoutButton.addEventListener('click', function () {
-
-        AuthenticationClient.clearCookies(getApplication());
-
-    });
-
 
 })();

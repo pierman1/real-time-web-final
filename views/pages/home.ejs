@@ -25,7 +25,7 @@
         <div class="well">
             <h3>All users</h3>
 
-            <ul>
+            <ul id="users-list">
                 <% for (var i=0; i < users.length; i++) { %>
 
                 <li><a href="/user/<%= users[i].user_name  %>"><%= users[i].user_name  %></a></li>
