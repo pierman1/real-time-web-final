@@ -8,6 +8,9 @@ const dotenv = require('dotenv').config();
 const session = require('express-session');
 /*-----------------------------*/
 
+// Use the session middleware
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
 // express static folder
 app.use(express.static('public')); // to add CSS/JS
 
@@ -193,94 +196,59 @@ app.get('/home', function (req, res) {
 
 app.get('/user/:id', function (req, res) {
 
+    // socket on connnection
+    io.on('connection', function (client) {
 
-    var user = req.params.id;
+        var user = req.params.id;
 
-    // console.log('users acces token]][[]][[]]][');
+        // console.log('users acces token]][[]][[]]][');
 
-    var access_token = users[0].acces_token;
+        var access_token = users[0].acces_token;
 
-    var options = {
-        url: 'https://api.spotify.com/v1/users/' + user + '/playlists',
-        headers: { 'Authorization': 'Bearer ' + access_token },
-        json: true
-    }
+        var options = {
+            url: 'https://api.spotify.com/v1/users/' + user + '/playlists',
+            headers: { 'Authorization': 'Bearer ' + access_token },
+            json: true
+        }
 
-    setInterval(function(){
+        // setInterval(function(){
 
-        request.get(options, function(error, response, body) {
+            request.get(options, function(error, response, body) {
 
-            console.log(body.items);
+                // console.log(body.items);
 
-            var albums = body.items;
+                var albums = body.items;
 
-            io.sockets.emit('user playlists', albums);
+                    //
+                    // console.log('user connected');
+                    //
+                    // console.log(client.id);
 
-        });
+                    io.socket.emit('user playlists', albums);
 
-    }, 3000);
+                    // io.clients[req.session.id].send()
 
-    res.locals.user = user;
+            });
+
+        // }, 3000);
+
+        res.locals.user = user;
+
+    });
 
     res.render('pages/user');
 
 
+
+
 });
 
-var getUsersPlaylist = function (access_token, refresh_token, req) {
-
-    // var options = {
-    //     url: 'https://api.spotify.com/v1/me/player/currently-playing',
-    //     headers: { 'Authorization': 'Bearer ' + access_token },
-    //     json: true
-    // }
-    //
-    // console.log(req);
-    //
-    // var options = {
-    //     url: 'https://api.spotify.com/v1/users/' +  + '/playlists',
-    //     headers: { 'Authorization': 'Bearer ' + access_token },
-    //     json: true
-    // }
-
-    // setInterval(function(){
-
-        // request.get(options, function(error, response, body) {
-        //
-        //     console.log(body);
-
-            // var playing = {
-            // name: body.item.name
-            // }
-
-            // io.emit('current playing', playing);
-
-        // });
-
-    // }, 3000);
-
-
-
-};
 
 app.get('/logout', function (req, res) {
 
     res.render('pages/logout' + req.params.id);
 
 });
-
-
-// socket on connnection
-io.on('connection', function (socket) {
-
-    console.log('new user');
-    console.log(users);
-
-    // send all users to socket connections
-    // socket.emit('new user', users);
-
-});
-
 
 http.listen(8888, function () {
     console.log('listening on *:8888');
