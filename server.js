@@ -1,4 +1,4 @@
-/*---------LOAD MODULES--------*/
+/*--------- Load modules --------*/
 const app = require('express')();
 const express = require('express');
 const http = require('http').Server(app);
@@ -6,7 +6,14 @@ const io = require('socket.io')(http);
 const request = require('request');
 const dotenv = require('dotenv').config();
 const session = require('express-session');
-/*-----------------------------*/
+/*------------------------------*/
+
+/*--------- Spotify acces --------*/
+const clientId = process.env.CLIENT_ID;
+const responseType = process.env.RESPONSE_TYPE;
+const redirectUri = process.env.REDIRECT_URI;
+const mysecret = process.env.MY_SECRET;
+/*-------------------------------*/
 
 // Use the session middleware
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
@@ -23,11 +30,6 @@ app.get('/', function(req, res){
     res.render('pages/index');
 
 });
-
-const clientId = process.env.CLIENT_ID;
-const responseType = process.env.RESPONSE_TYPE;
-const redirectUri = process.env.REDIRECT_URI;
-const mysecret = process.env.MY_SECRET;
 
 // users array
 var users = [];
@@ -94,8 +96,6 @@ var userCheck = function (access_token, refresh_token, res, req) {
 
         var userName = body.id;
 
-        // console.log(userName);
-
         // new user constructor
         function user(username, accestoken) {
 
@@ -115,16 +115,10 @@ var userCheck = function (access_token, refresh_token, res, req) {
 
         }
 
-
         var uniqueArray = users.filter(function(item, pos) {
             return users.indexOf(item) == pos;
         });
 
-        // console.log('JOEHOOEEE::::::');
-
-        // console.log(uniqueArray);
-
-        // console.log(users);
 
         var parsedUrlPath = req._parsedUrl.pathname;
         console.log(parsedUrlPath);
@@ -197,7 +191,7 @@ app.get('/home', function (req, res) {
 app.get('/user/:id', function (req, res) {
 
     // socket on connnection
-    io.on('connection', function (client) {
+    // io.on('connection', function (client) {
 
         var user = req.params.id;
 
@@ -213,32 +207,32 @@ app.get('/user/:id', function (req, res) {
 
         // setInterval(function(){
 
-            request.get(options, function(error, response, body) {
+        request.get(options, function(error, response, body) {
 
-                // console.log(body.items);
+            // console.log(body.items);
 
-                var albums = body.items;
+            var albums = body.items;
 
-                    //
-                    // console.log('user connected');
-                    //
-                    // console.log(client.id);
+                //
+                // console.log('user connected');
+                //
+                // console.log(client.id);
 
-                    io.socket.emit('user playlists', albums);
+                io.sockets.emit('user playlists', albums);
 
-                    // io.clients[req.session.id].send()
+                res.locals.user = user;
 
-            });
+                // io.clients[req.session.id].send()
+
+        });
 
         // }, 3000);
 
         res.locals.user = user;
 
-    });
+    // });
 
     res.render('pages/user');
-
-
 
 
 });
@@ -250,8 +244,8 @@ app.get('/logout', function (req, res) {
 
 });
 
-// http.listen(8888, function () {
-http.listen(process.env.PORT || 5000, function () {
+http.listen(8888, function () {
+// http.listen(process.env.PORT || 5000, function () {
 
         console.log('listening on *:8888');
 
