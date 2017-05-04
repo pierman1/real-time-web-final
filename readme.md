@@ -75,6 +75,10 @@ cd real-time-web-final
 npm install
 ```
 
+**.ENV file**
+
+Op spotify.developer.com moet je een applicatie aanmaken, hiermee krijg je vervolgens de **CLIENT_ID**, en de **CLIENT_SECRET**. Deze dienen niet openbaar beschikbaar te zijn, vandaar maak ik gebruik van een .env file. **ZET DEZE GEGEVENS IN DE .ENV**
+
 **Start the de server**
 
 ```
@@ -91,7 +95,7 @@ npm start
 
 #### Offline
 
-Op het moment als
+Op het moment als de gebruiker geen connectie kan maken met de API van Spotify, word er een andere pagina geserveerd waarop staat dat er geen connectie gemaakt kan worden met de API.
 
 ### Feature list
 
