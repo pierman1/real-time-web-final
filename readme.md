@@ -61,20 +61,21 @@ Voor het tonen van de playlists van de gebruiker, waar die van opgevraagd word.
 
 **Clone this repo**
 
-Om de applicatie te installeren, moet je:
+**Om de applicatie te installeren, moet je deze repository clonen**
 
 ```
-git clone https://github.com/pierman1/real-time-web.git
-cd real-time-web-2
+https://github.com/pierman1/real-time-web-final.git
+
+cd real-time-web-final
 ```
 
-Installeer de dependencies:
+**Installeer de dependencies:**
 
-```$xslt
+```
 npm install
 ```
 
-Start the de server
+**Start the de server**
 
 ```
 node server.js
@@ -86,6 +87,11 @@ or
 npm start
 ```
 
+**Server.js**: Bevat de Express server.
+
+#### Offline
+
+Op het moment als
 
 ### Feature list
 
@@ -107,6 +113,7 @@ https://spotify-share-playlist.herokuapp.com/
 * [ ] De currently playing muziek per gebruiker tonen, zodat de gebruikers op de hoogte kunnen blijven van wie wat aan het luisteren is. 
 * [ ] Het kunnen liken van afspeellijsten. En vervolgens deze kunnen afspelen.
 * [ ] Het kunnen zien wie er daadwerkelijk online is.
+* [ ] Opslaan op de server/of lokaal wie er in gelogt is. Zodat je als je terug gaat nog ziet wie er ingelogt is.
 
 **Resources:**
 
