@@ -106,7 +106,7 @@ https://spotify-share-playlist.herokuapp.com/
 * [ ] In plaats van de gebruikers op te slaan in een array met objecten, hiervoor een database gebruiken.
 * [ ] De currently playing muziek per gebruiker tonen, zodat de gebruikers op de hoogte kunnen blijven van wie wat aan het luisteren is. 
 * [ ] Het kunnen liken van afspeellijsten. En vervolgens deze kunnen afspelen.
-* [ ] 
+* [ ] Het kunnen zien wie er daadwerkelijk online is.
 
 **Resources:**
 
