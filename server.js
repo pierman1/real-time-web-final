@@ -256,8 +256,8 @@ app.get('/logout', function (req, res) {
 
 });
 
-http.listen(8888, function () {
-// http.listen(process.env.PORT || 5000, function () {
+// http.listen(8888, function () {
+http.listen(process.env.PORT || 5000, function () {
 
         console.log('listening on *:8888');
 
