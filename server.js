@@ -71,14 +71,19 @@ app.get('/callback', function (req, res) {
     };
 
     request.post(authOptions, function(error, response, body) {
+        if (!error && response.statusCode === 200) {
 
-        var access_token = body.access_token;
-        var refresh_token = body.refresh_token;
+            var access_token = body.access_token;
+            var refresh_token = body.refresh_token;
 
-        console.log('////////////////////');
+            // user check function
+            userCheck(access_token, refresh_token, res, req);
 
-        // user check function
-        userCheck(access_token, refresh_token, res, req);
+        } else {
+
+            res.render('pages/offline');
+
+        }
 
     });
 
@@ -107,17 +112,23 @@ var userCheck = function (access_token, refresh_token, res, req) {
         // loop true all values of users to check for doubles
         if (typeof userName !== "undefined") {
 
-            users.push(
+            var foundUser = false
+            users.forEach(function(el,index){
+                if(el.user_name == userName){
+                    foundUser = true
+                }
+            })
 
-                user = new user(userName, access_token)
+            if(!foundUser){
+                users.push(
 
-            );
+                    user = new user(userName, access_token)
+
+                );
+            }
 
         }
 
-        var uniqueArray = users.filter(function(item, pos) {
-            return users.indexOf(item) == pos;
-        });
 
 
         var parsedUrlPath = req._parsedUrl.pathname;
@@ -205,7 +216,7 @@ app.get('/user/:id', function (req, res) {
             json: true
         }
 
-        // setInterval(function(){
+        setInterval(function(){
 
         request.get(options, function(error, response, body) {
 
@@ -218,7 +229,8 @@ app.get('/user/:id', function (req, res) {
                 //
                 // console.log(client.id);
 
-                io.sockets.emit('user playlists', albums);
+                // io.sockets.emit('user playlists', albums);
+            io.of('/' + req.params.id).emit('event_1', albums);
 
                 res.locals.user = user;
 
@@ -226,7 +238,7 @@ app.get('/user/:id', function (req, res) {
 
         });
 
-        // }, 3000);
+        }, 3000);
 
         res.locals.user = user;
 
