@@ -268,7 +268,7 @@ app.get('/user/:id', function (req, res) {
     setInterval(function(){
 
         request.get(options, function(error, response, body) {
-
+0
             var albums = body.items;
 
             io.of('/' + req.params.id).emit('event_1', albums);
@@ -279,23 +279,17 @@ app.get('/user/:id', function (req, res) {
 
     }, 3000);
 
-    // setTimeout(function(){
-    
-    // }, 500);
-
     res.locals.user = user;
 
-    res.render('pages/user');
-
     request.get(options, function(error, response, body) {
-
-        var albums = body.items;
-
-        io.of('/' + req.params.id).emit('event_1', albums);
+        // console.log(body.items);
 
         res.locals.user = user;
-
+        res.render('pages/user', {
+            albums = body.items;
+         });
     });
+
 
 });
 
@@ -383,8 +377,8 @@ app.get('/logout', function (req, res) {
 
 });
 
-// http.listen(8888, function () {
-http.listen(process.env.PORT || 5000, function () {
+http.listen(8888, function () {
+// http.listen(process.env.PORT || 5000, function () {
 
         console.log('listening on *:8888');
 
