@@ -19,15 +19,23 @@ a {
     justify-content: space-around;
     background-color: #ffffff;
     margin: 0;
-    padding: .5rem 0;
 }
 
 .nav > li {
     list-style: none;
+    padding: .5rem 1rem;
+    transition: 300ms;
 }
 
 .nav > li > a {
     color: #5e00c6;
+    text-decoration: none;
+}
+
+.nav > li:hover, .nav li:hover a {
+    background-color: #380078;
+    color: #fff;
+    text-decoration: none;
 }
 
 .nav > li:last-child {
@@ -43,11 +51,28 @@ a {
     -webkit-flex-direction: row;
     -webkit-align-content: stretch;
     align-content: stretch;
+    margin: 1rem auto 0 auto;
+    width: 95%;
+    max-width: 1100px;
 }
 
 .main--home {
     text-align: center;
     flex-direction: column;
+}
+
+.main--profile {
+    display: block;
+}
+
+.main--artist {
+    display: block;
+}
+
+.main--artist img {
+    margin-left: .5rem;
+    padding: .5rem;
+    background-color: #8216FC;
 }
 
 .logo {
@@ -74,10 +99,111 @@ a {
     padding: 1rem;
 }
 
+.container--following {
+    background-color:#8216FC;
+    width: 100%;
+    padding: 1rem;
+}
+
 .container--sidebar {
     background-color: #380078;
     -webkit-flex: 1;
     flex:1;
     position:relative;
     padding: 1rem;
+}
+
+.user-info, .following-artists, .play-lists, .genres-list, .users-list {
+    background-color: #380078;
+    border-radius: 3px;
+    text-align: left;
+    margin: .5rem;
+    padding: 0;
+    max-width: 20rem;
+    list-style: none;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.following-artists, .play-lists {
+    max-width: none;
+    font-weight: 100;
+}
+
+.following-artists li, .play-lists li, .genres-list li, .users-list li {
+    border-bottom: 2px solid gray;
+}
+
+.following-artists li a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.following-artists li a span {
+    width: 25%;
+}
+.user-info a, .play-lists a {
+    text-decoration: none;;
+}
+
+.user-info li, .following-artists li, .play-lists li, .genres-list li, .users-list li {
+    padding: 1rem;
+    transition: .3s;
+}
+
+.user-info li:hover, .following-artists li:hover, .play-lists li:hover, .genres-list li:hover, .users-list li:hover {
+    padding-left: 1.5rem;
+}
+
+.user-info li:hover, .following-artists li:hover, .play-lists li:hover, .genres-list li:hover, .users-list li:hover {
+    background-color: #8216FC;
+}
+
+form {
+    font-size: 1.8rem;
+}
+
+#user-search-input {
+    color: white;
+    background-color: #380078;
+    border: solid white 3px;
+    padding: .5rem;
+    font-size: inherit;
+}
+
+#user-search-submit {
+    color: white;
+    background-color: #5e00c6;
+    padding: .5rem;
+    border: solid white 3px;
+    font-size: inherit;
+}
+
+.btn {
+    background-color: #84bd00;
+    border-radius: 3px;
+    margin: 1rem .5rem;
+    padding:.5rem;
+    text-decoration: none;
+    font-weight: 300;
+    transition: 300ms;
+}
+
+.btn:hover {
+    background-color: #486800;
+    color: darkgray;
+}
+/*<form id="user-search" action="">*/
+/*<input id="user-search-input" placeholder="user name" type="text">*/
+/*<input id="user-search-submit" type="submit">*/
+/*</form>*/
+
+.playlist-img {
+    max-width: 150px;
+    margin-right: 1rem;
+}
+
+.hidden {
+    display: none;
 }

@@ -15,24 +15,27 @@
     <div class="container--content">
 
         <div class="jumbotron">
-            <h1>Welkom, <span><%= username %></span></h1>
+            <h1>Welkom, </h1>
             <p>In deze applicatie kun je als meerdere gebruikers inloggen, en vervolgens elkaars playlisten bekijken.</p>
             <p>Dit allemaal real-time, dit houd in dat als iemand een nieuwe afspeellijst toevoegd, dat deze gelijk in de lijst naar voren komt.</p>
         </div>
+
+        <h2>Actieve gebruikers:</h2>
+
+        <ul id="users-list" class="users-list">
+            <% for (var i=0; i < users.length; i++) { %>
+
+            <li><a href="/user/<%= users[i].user_name  %>"><%= users[i].user_name  %></a></li>
+
+            <% }; %>
+        </ul>
+
 
     </div>
     <div class="container--sidebar">
 
         <div class="well">
-            <h3>All users</h3>
 
-            <ul id="users-list">
-                <% for (var i=0; i < users.length; i++) { %>
-
-                <li><a href="/user/<%= users[i].user_name  %>"><%= users[i].user_name  %></a></li>
-
-                <% }; %>
-            </ul>
 
         </div>
 

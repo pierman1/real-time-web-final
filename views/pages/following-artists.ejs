@@ -1,0 +1,42 @@
+<!-- views/pages/about.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main class="main">
+    <div class="container--following">
+        <h3>Your artists</h3>
+        <p>The artists you follow:</p>
+
+        <ul class="following-artists">
+            <% for (var i=0; i < artists.length; i++) { %>
+
+            <li>
+                <a href="/artist/<%= artists[i].id  %>">
+                    <span><%= artists[i].name  %></span>
+                    <span>Popularity: <%= artists[i].popularity  %></span>
+                    <span>Followers: <%= artists[i].followers.total  %></span>
+                </a>
+            </li>
+
+            <% }; %>
+        </ul>
+
+    </div>
+
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

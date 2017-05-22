@@ -1,0 +1,50 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main class="main main--profile">
+
+    <h1>Your profile</h1>
+
+    <ul class="user-info">
+        <a href="<%= externalurl %>">
+            <li>Username: <%= username %></li>
+            <li>Type: <%= type %></li>
+            <li>URI: <%= uri %></li>
+        </a>
+    </ul>
+    <a class="btn" href="/following">Your artists</a>
+
+    <h2>Search user</h2>
+    <form id="user-search" action="">
+        <input id="user-search-input" placeholder="user name" type="text">
+        <input id="user-search-submit" type="submit">
+    </form>
+
+    <ul class="user-info" id="show-user"></ul>
+
+    <div class="container--sidebar">
+
+        <div class="well">
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

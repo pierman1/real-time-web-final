@@ -15,27 +15,35 @@
     <div class="container--content">
 
         <div class="jumbotron">
-            <h3>Playlists user: <span><%= user %></span></h3>
+            <h1><%= name %></h1>
 
-            <ul id="play-lists" class="play-lists">
+            <p><%= description %></p>
 
+            <ul class="following-artists">
+                <% for (var i=0; i < tracks.length; i++) { %>
+
+                <li>
+                    <span><%= tracks[i].name  %></span>
+                </li>
+
+                <% }; %>
             </ul>
+
         </div>
 
     </div>
     <div class="container--sidebar">
 
         <div class="well">
-            <h3>User info:</h3>
+
 
         </div>
 
     </div>
 </main>
 
-<script>var thisUser = '<%= user %>';</script>
 <footer>
-    <% include ../partials/footer-user %>
+    <% include ../partials/footer %>
 </footer>
 
 </body>
