@@ -279,23 +279,23 @@ app.get('/user/:id', function (req, res) {
 
     }, 3000);
 
-    setTimeout(function(){
-
-        request.get(options, function(error, response, body) {
-
-            var albums = body.items;
-
-            io.of('/' + req.params.id).emit('event_1', albums);
-
-            res.locals.user = user;
-
-        });
-
-    }, 500);
+    // setTimeout(function(){
+    
+    // }, 500);
 
     res.locals.user = user;
 
     res.render('pages/user');
+
+    request.get(options, function(error, response, body) {
+
+        var albums = body.items;
+
+        io.of('/' + req.params.id).emit('event_1', albums);
+
+        res.locals.user = user;
+
+    });
 
 });
 
