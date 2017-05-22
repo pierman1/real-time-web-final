@@ -269,8 +269,6 @@ app.get('/user/:id', function (req, res) {
 
         request.get(options, function(error, response, body) {
 
-            // console.log(body.items);
-
             var albums = body.items;
 
             io.of('/' + req.params.id).emit('event_1', albums);
@@ -280,6 +278,20 @@ app.get('/user/:id', function (req, res) {
         });
 
     }, 3000);
+
+    setTimeout(function(){
+
+        request.get(options, function(error, response, body) {
+
+            var albums = body.items;
+
+            io.of('/' + req.params.id).emit('event_1', albums);
+
+            res.locals.user = user;
+
+        });
+
+    }, 500);
 
     res.locals.user = user;
 
