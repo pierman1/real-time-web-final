@@ -18,13 +18,12 @@
             <h3>Playlists user: <span><%= user %></span></h3>
 
             <ul id="play-lists" class="play-lists">
-
+                <li><strong>Waiting on real-time connection...</strong></li>
                 <% albums.forEach(function(el,index){ %>
                 <li> <%= el.name %></li>
                 <% }); %>
-
-
             </ul>
+
         </div>
 
     </div>

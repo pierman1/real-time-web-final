@@ -13,6 +13,10 @@ a {
     color: #fff;
 }
 
+p {
+    max-width: 40rem;
+}
+
 .nav {
     display: flex;
     flex-direction: row;
@@ -103,6 +107,7 @@ a {
     background-color:#8216FC;
     width: 100%;
     padding: 1rem;
+    padding-bottom: 2rem;
 }
 
 .container--sidebar {

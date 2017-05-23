@@ -20,20 +20,6 @@ const mysecret = process.env.MY_SECRET;
 app.use(session({secret:'a08873ljadfasf', resave:false, saveUninitialized: true}));
 // Todo: hide secret in env.
 
-// app.get('/dashboard', function (req, res) {
-//
-//    if(!req.session.user) {
-//
-//        return res.status(401).send();
-//
-//    }
-//
-//    console.log(req.session.user.acces_token);
-//    return res.status(200).send('Welcome to super secret API');
-//
-//
-// });
-
 // express static folder
 app.use(express.static('public')); // to add CSS/JS
 
@@ -43,7 +29,16 @@ app.set('view engine', 'ejs');
 // index page
 app.get('/', function(req, res){
 
-    res.render('pages/index');
+    // if there is a session
+    if(req.session.user) {
+
+        res.redirect('/authorization');
+
+    } else {
+
+        res.render('pages/index');
+
+    }
 
 });
 
@@ -148,8 +143,6 @@ var showUserInfo = function (access_token, refresh_token, res, req) {
 };
 
 app.get('/following', function (req, res) {
-    console.log('..................')
-    console.log(req.session.user.acces_token);
 
     var access_token = req.session.user.acces_token;
 
@@ -174,20 +167,6 @@ app.get('/following', function (req, res) {
     });
 
 });
-
-// var userCheck = function (access_token, refresh_token, res, req) {
-//
-//
-//
-//
-//
-//
-//
-//         // io.sockets.emit('new user', users);
-//
-//     });
-//
-// }
 
 app.get('/home', function (req, res) {
 
@@ -243,13 +222,33 @@ app.get('/home', function (req, res) {
 
         res.render('pages/home');
 
-        // io.on('connection', function (socket) {
-        //     console.log('new user');
         io.sockets.emit('new user', users);
-        // });
+
+    });
+
+});
+
+app.get('/playlist/:id', function(req, res) {
+
+    var access_token = req.session.user.acces_token;
+
+    var options = {
+        url: 'https://api.spotify.com/v1/users/spotify/playlists/' + req.params.id,
+        headers: { 'Authorization': 'Bearer ' + access_token },
+        json: true
+    }
+
+    request.get(options, function(error, response, body) {
+
+            res.locals.name          = body.name;
+            // res.locals.description   = body.description;
+            res.locals.tracks        = body.tracks.items;
+
+            res.render('pages/song-list');
 
 
     });
+
 
 });
 
@@ -265,12 +264,19 @@ app.get('/user/:id', function (req, res) {
         json: true
     }
 
+
+
     setInterval(function(){
 
         request.get(options, function(error, response, body) {
 0
             var albums = body.items;
-
+            //used for magic.  Unicorns are loading data to client!
+            /*
+            emits 'event_1' to client where user is logged in:
+            -req.params.id = user_ID
+            -event_1 = socket key name that refers to function on the client JS/IO
+            */
             io.of('/' + req.params.id).emit('event_1', albums);
 
             res.locals.user = user;
@@ -282,14 +288,15 @@ app.get('/user/:id', function (req, res) {
     res.locals.user = user;
 
     request.get(options, function(error, response, body) {
-        // console.log(body.items);
+
+        console.log(body.items);
+        io.of('/' + req.params.id).emit('event_1', body.items);
 
         res.locals.user = user;
         res.render('pages/user', {
-            albums = body.items;
+            albums : body.items
          });
     });
-
 
 });
 
@@ -297,13 +304,14 @@ app.get('/user/:id/:list', function (req, res) {
 
     // res.redirect(404, '/404');
 
-    console.log(req.params.id);
-    console.log(req.params.list);
+    // console.log(req.params.id);
+    // console.log(req.params.list);
+    // console.log(req);
 
     var access_token = req.session.user.acces_token;
 
     var options = {
-        url: 'https://api.spotify.com/v1/users/pbleeker/playlists/' + req.params.list,
+        url: 'https://api.spotify.com/v1/users/' + req.params.id + '/playlists/' + req.params.list,
         headers: { 'Authorization': 'Bearer ' + access_token },
         json: true
     }
@@ -312,23 +320,33 @@ app.get('/user/:id/:list', function (req, res) {
 
     request.get(options, function(error, response, body) {
 
-        if (!body) {
+        // console.log(response.body.error.status);
 
-            res.render('pages/404');
+        // console.log(body)
+        //
+        // console.log(body.tracks);
+        // console.log(body.tracks.items);
+        //
+        // // if (body.tracks) {
+        //
+        // console.log('////////////////////////');
+        // console.log(body);
 
-        } else {
-            console.log('////////////////////////');
-            console.log(body.tracks.items);
+        res.locals.name          = body.name;
+        // res.locals.description   = body.description;
+        res.locals.tracks        = body.tracks.items;
 
-            res.locals.name          = body.name;
-            res.locals.description   = body.description;
-            res.locals.tracks        = body.tracks.items;
+        res.render('pages/song-list');
 
-            res.render('pages/song-list');
-        }
+        // } else {
+
+        //     console.log('so its smaller');
+        //
+        //     return;
+        //
+        // }
 
     });
-
 
 });
 
@@ -368,8 +386,6 @@ app.get('/artist/:artist', function (req, res) {
     });
 
 });
-
-
 
 app.get('/logout', function (req, res) {
 

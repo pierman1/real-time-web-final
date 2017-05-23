@@ -13,32 +13,41 @@
 
 <main class="main main--profile">
 
-    <h1>Your profile</h1>
+    <div class="container--following">
 
-    <ul class="user-info">
-        <a href="<%= externalurl %>">
-            <li>Username: <%= username %></li>
-            <li>Type: <%= type %></li>
-            <li>URI: <%= uri %></li>
-        </a>
-    </ul>
-    <a class="btn" href="/following">Your artists</a>
+        <h1>Welkom, <%= username %></h1>
 
-    <h2>Search user</h2>
-    <form id="user-search" action="">
-        <input id="user-search-input" placeholder="user name" type="text">
-        <input id="user-search-submit" type="submit">
-    </form>
+        <p>In deze applicatie kan je zien welke artiesten je volgt, je afspeellijsten en realtime elkaars afspeellijsten bekijken op basis van de actieve gebruikers op het moment.</p>
 
-    <ul class="user-info" id="show-user"></ul>
+        <h2>Mijn profiel</h2>
 
-    <div class="container--sidebar">
-
-        <div class="well">
-
-        </div>
+        <ul class="user-info">
+            <a href="<%= externalurl %>">
+                <li>Username: <%= username %></li>
+                <li>Type: <%= type %></li>
+                <li>URI: <%= uri %></li>
+            </a>
+        </ul>
+        <a class="btn" href="/following">Jouw artiesten</a>
+        <a class="btn" href="/home">Actieve gebruikers</a>
 
     </div>
+
+    <!--<h2>Search user</h2>-->
+    <!--<form id="user-search" action="">-->
+        <!--<input id="user-search-input" placeholder="user name" type="text">-->
+        <!--<input id="user-search-submit" type="submit">-->
+    <!--</form>-->
+
+    <!--<ul class="user-info" id="show-user"></ul>-->
+
+    <!--<div class="container&#45;&#45;sidebar">-->
+
+        <!--<div class="well">-->
+
+        <!--</div>-->
+
+    <!--</div>-->
 
 </main>
 

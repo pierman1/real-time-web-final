@@ -166,7 +166,6 @@
 
                 var album = document.createElement('li');
                 var albumLink = document.createElement('a');
-                albumLink.href = window.location.pathname + '/' + albums[i].id;
 
                 // if image avaidable add it & hide it
                 if(albums[i].images.length > 0) {
@@ -181,8 +180,10 @@
 
                 // console.log(users[i].name);
                 if(albums[i].owner.id == thisUser) {
+                    albumLink.href = window.location.pathname + '/' + albums[i].id;
                     albumLink.innerHTML = albums[i].name;
                 }else{
+                    albumLink.href = '/playlist/' + albums[i].id;
                     albumLink.innerHTML = '<strong>Volgend:</strong> '+ albums[i].name;
                 }
 

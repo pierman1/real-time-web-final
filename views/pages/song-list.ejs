@@ -17,13 +17,13 @@
         <div class="jumbotron">
             <h1><%= name %></h1>
 
-            <p><%= description %></p>
-
             <ul class="following-artists">
                 <% for (var i=0; i < tracks.length; i++) { %>
-
                 <li>
-                    <span><%= tracks[i].name  %></span>
+                    <a href="<%= tracks[i].track.url  %>">
+                        <span><%= tracks[i].track.name  %></span>
+                        <span>Populariteit: <%= tracks[i].track.popularity  %></span>
+                    </a>
                 </li>
 
                 <% }; %>
@@ -35,7 +35,6 @@
     <div class="container--sidebar">
 
         <div class="well">
-
 
         </div>
 

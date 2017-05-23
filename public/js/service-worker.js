@@ -6,13 +6,10 @@ var RUNTIME = 'runtime';
 
 // A list of local resources we always want to be cached.
 var CACHE_ITEMS = [
-    '/offline/index.html',
-    './css/main.css',
-    './images/wifi.svg',
-    './js/bundle.js',
-    'https://fonts.googleapis.com/css?family=Slabo+27px|Source+Sans+Pro',
-    'https://fonts.gstatic.com/s/inconsolata/v15/BjAYBlHtW3CJxDcjzrnZCIgp9Q8gbYrhqGlRav_IXfk.woff2',
-    'https://fonts.googleapis.com/css?family=Inconsolata|Source+Sans+Pro'
+    '/',
+    'css/style.css',
+    'js/main.js',
+    '/offline/'
 ];
 
 // The install handler takes care of precaching the resources we always need.
