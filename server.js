@@ -344,15 +344,6 @@ app.get('/user/:id/:list', function (req, res) {
 
     // Todo: update list with socket
 
-    // request.get(options, function(error, response, body) {
-    //
-    //     // console.log(body.params);
-    //     io.of('/' + req.params.id + '/' + req.params.list).emit('list_update', body.items);
-    //
-    //     // res.locals.user = user;
-    //
-    // });
-
 
 });
 
