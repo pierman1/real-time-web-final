@@ -26,7 +26,7 @@
 
 https://spotify-share-playlist.herokuapp.com/
 
-### 1 Project
+## 1 Project
 
 By using the Spotify API, I made it possible to share your playlists real-time with each other
 same with your artists. This allows the user to stay up-to-date with their friends music, and playlists of his or her friends.
@@ -37,7 +37,7 @@ I also made it possible to gain additional information about the artists that yo
 
 Stay constantly informed of each others music on Spotify. 
 
-#### 2 Process
+## 2 Process
 
 It was quite a process, as I wrote my first line server-side code 3 weeks ago.
 
@@ -48,7 +48,7 @@ The Spotify API. Because I wannted to try to make of use Oauth, I spent a lot of
 
 An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.
 
-#### 3 How does it work?
+## 3 How does it work?
 
 - The user logs in with his/her spotify account (OAuth)
 - The user sees a unique view of her account (username, spotify-URI)
@@ -58,10 +58,7 @@ An open protocol to allow secure authorization in a simple and standard method f
 - Then the user is routed to a corresponding person and the playlists.
 - This playlist is updated real-time by polling every 3 seconds.
 
-
-### 4 Results
-
-#### 5 Tooling
+## 5 Tooling
 
 Used packages:
 
@@ -73,14 +70,14 @@ Used packages:
 *  [EJS](https://socket.io/)
 
 
-### 6 Requests
+## 6 Requests
 
 - [Get Current User’s Profile](https://developer.spotify.com/web-api/get-current-users-profile/)
 - [Get a Playlist](https://developer.spotify.com/web-api/get-playlist/)
 - [Get User's Folowed Artists](https://developer.spotify.com/web-api/get-followed-artists/)
 - [Get an Artist](https://developer.spotify.com/web-api/get-artist/)
 
-### 7 Socket Events (Socket.io)
+## 7 Socket Events (Socket.io)
 
 [Socket.IO]()
 makes it possible to make real-time bidirectional event-vased easy writable socket connections. Cross-browser and available on every
@@ -109,7 +106,7 @@ the user
 
 For showing the user's playlists real-time. Every 3 seconds the playlists are polled, then by a socket.io connection it's sended to the specific user.
 
-### 8 Instructions
+## 8 Instructions
 
 **Clone this repo**
 
@@ -151,11 +148,11 @@ npm nodemon -g
 
 **Server.js**: Makes use of Express
 
-#### 9 Offline
+## 9 Offline
 
 At the moment when the user can not connect to the Spotify API, another page is served that states that no connection can be made with the API.
 
-### 10 Feature list
+## 10 Feature list
 
 * [x] Oauth, self written
 * [x] Real time updates of active users with socket.io
@@ -173,7 +170,7 @@ Deployed app on heroku:
 https://spotify-share-playlist.herokuapp.com/
 
 
-### 11 Wishlist
+## 11 Wishlist
 
 
 * [x] Possibility to click on a specific playlist and request the songs in this playlist
