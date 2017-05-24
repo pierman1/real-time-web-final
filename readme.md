@@ -29,7 +29,7 @@ https://spotify-share-playlist.herokuapp.com/
 ### 1 Project
 
 By using the Spotify API, I made it possible to share your playlists real-time with each other
-same with your artists. This allows the user to stay up to date with their friends music the new playlists of his or her friends.
+same with your artists. This allows the user to stay up-to-date with their friends music, and playlists of his or her friends.
 
 I also made it possible to gain additional information about the artists that you followed, their discription and genres.
 
@@ -129,7 +129,7 @@ npm install
 
 **.ENV file**
 
-On spotify.developer.com you must create an application, which will give you the ** CLIENT_ID **, and the ** CLIENT_SECRET **. These should not be publicly available, store them in a .env file. ** SET THIS DATA IN THE .ENV **
+On spotify.developer.com you must create an application, which will give you the **CLIENT_ID**, and the **CLIENT_SECRET**. These should not be publicly available, store them in a .env file. **ET THIS DATA IN THE .ENV**
 
 **Then we can start the de server**
 
