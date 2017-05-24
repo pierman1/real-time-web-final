@@ -8,16 +8,16 @@
 ## Table of contents
 
 - [1. Project](#1-project)
-- [2. Process](#process)
-- [3. How does it work?](#how)
-- [4. Results](#results)
-- [5. Tooling](#tooling)
-- [6. Requests](#requests)
-- [7. Socket events](#socket)
-- [8. Instructions](#instructions)
-- [9. Offline](#offline)
-- [10. Feature list](#features)
-- [11. Wishlist](#wish)
+- [2. Process](#2-process)
+- [3. How does it work?](#3-how-does-it-work)
+- [4. Results](#4-results)
+- [5. Tooling](#5-tooling)
+- [6. Requests](#6-requests)
+- [7. Socket events](#7-socket)
+- [8. Instructions](#8-instructions)
+- [9. Offline](#9-offline)
+- [10. Feature list](#10-feature-list)
+- [11. Wishlist](#11-wish-list)
 
 ------------------------------
 
@@ -37,7 +37,7 @@ I also made it possible to gain additional information about the artists that yo
 
 Stay constantly informed of each others music on Spotify. 
 
-#### Process
+#### 2 Process
 
 Het was me een process, aangezien ik mijn eerste regel server-side 3 weken geleden had geschreven.
 
@@ -47,7 +47,12 @@ de Spotify-API. Omdat het hier ook nodig was om Oauth te gebruiken heb ik hier v
 Omdat het allemaal een beetje kortdag was ben ik gelijk van start gegaan zonder goed na te denken over mijn concept, hierdoor had ik niet een duidelijk 
 beeld van wat het zou moeten zijn.
 
-#### How does it work?
+It was quite a process, as I wrote my first line server-side code 3 weeks ago.
+
+I started setting up Oauth for Twitter, but because I only could find little documentation for this, I switched to
+The Spotify API. Because I wannted to try to make of use Oauth, I spent a lot of time figuring this out. Maybe a little too much time.
+
+#### 3 How does it work?
 
 - The user logs in with his/her spotify account (OAuth)
 - The user sees a unique view of her account (username, spotify-URI)
@@ -58,9 +63,9 @@ beeld van wat het zou moeten zijn.
 - This playlist is updated real-time by polling every 3 seconds.
 
 
-### Results
+### 4 Results
 
-#### Tooling
+#### 5 Tooling
 
 Used packages:
 
@@ -72,14 +77,14 @@ Used packages:
 *  [EJS](https://socket.io/)
 
 
-### Requests
+### 6 Requests
 
 - [Get Current User’s Profile](https://developer.spotify.com/web-api/get-current-users-profile/)
 - [Get a Playlist](https://developer.spotify.com/web-api/get-playlist/)
 - [Get User's Folowed Artists](https://developer.spotify.com/web-api/get-followed-artists/)
 - [Get an Artist](https://developer.spotify.com/web-api/get-artist/)
 
-#### Socket Events (Socket.io)
+#### 7 Socket Events (Socket.io)
 
 [Socket.IO]()
 makes it possible to make real-time bidirectional event-vased easy writable socket connections. Cross-browser and available on every
@@ -108,7 +113,7 @@ the user
 
 For showing the user's playlists real-time. Every 3 seconds the playlists are polled, then by a socket.io connection it's sended to the specific user.
 
-### Instructions
+### 8 Instructions
 
 **Clone this repo**
 
@@ -150,11 +155,11 @@ npm nodemon -g
 
 **Server.js**: Makes use of Express
 
-#### Offline
+#### 9 Offline
 
 At the moment when the user can not connect to the Spotify API, another page is served that states that no connection can be made with the API.
 
-### Feature list
+### 10 Feature list
 
 * [x] Oauth, self written
 * [x] Real time updates of active users with socket.io
@@ -168,20 +173,18 @@ At the moment when the user can not connect to the Spotify API, another page is 
 * [x] View each other playlists (on different routes)
 * [x] User check (for doubles)
 
-Verder heb ik de applicatie live staan en deze is te bezoeken op:
-
+Deployed app on heroku: 
 https://spotify-share-playlist.herokuapp.com/
 
 
-### Wishlist
+### 11 Wishlist
 
 
-* [x] Mogelijkheid om door te klikken op een specifieke afspeellijst en hier bij de desbetreffende nummers op vragen.
-* [ ] In plaats van de gebruikers op te slaan in een array met objecten, hiervoor een database gebruiken.
-* [ ] De currently playing muziek per gebruiker tonen, zodat de gebruikers op de hoogte kunnen blijven van wie wat aan het luisteren is. 
-* [ ] Het kunnen liken van afspeellijsten. En vervolgens deze kunnen afspelen.
-* [ ] Het kunnen zien wie er daadwerkelijk online is.
-* [ ] Opslaan op de server/of lokaal wie er in gelogt is. Zodat je als je terug gaat nog ziet wie er ingelogt is.
+* [x] Possibility to click on a specific playlist and request the songs in this playlist
+* [ ] Instead of saving users in an array of objects, use a database (MongoDB).
+* [ ] Show currently playing songs, so users can see what people are listening (realtime) 
+* [ ] Saving playlists to your account
+* [ ] Session storage > to avoid logging in alltime
 
 **Resources:**
 
