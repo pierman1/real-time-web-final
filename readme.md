@@ -39,18 +39,14 @@ Stay constantly informed of each others music on Spotify.
 
 #### 2 Process
 
-Het was me een process, aangezien ik mijn eerste regel server-side 3 weken geleden had geschreven.
-
-Ik was begonnen met het opzetten van Oauth voor Twitter, omdat ik hier weinig documentatie voor kon vinden ben ik vervolgens maar overgestapt naar 
-de Spotify-API. Omdat het hier ook nodig was om Oauth te gebruiken heb ik hier veel tijd aan besteedt. Misschien wel iets te veel tijd.
-
-Omdat het allemaal een beetje kortdag was ben ik gelijk van start gegaan zonder goed na te denken over mijn concept, hierdoor had ik niet een duidelijk 
-beeld van wat het zou moeten zijn.
-
 It was quite a process, as I wrote my first line server-side code 3 weeks ago.
 
 I started setting up Oauth for Twitter, but because I only could find little documentation for this, I switched to
 The Spotify API. Because I wannted to try to make of use Oauth, I spent a lot of time figuring this out. Maybe a little too much time.
+
+**[OAuth](https://oauth.net/)**
+
+An open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications.
 
 #### 3 How does it work?
 
@@ -84,7 +80,7 @@ Used packages:
 - [Get User's Folowed Artists](https://developer.spotify.com/web-api/get-followed-artists/)
 - [Get an Artist](https://developer.spotify.com/web-api/get-artist/)
 
-#### 7 Socket Events (Socket.io)
+### 7 Socket Events (Socket.io)
 
 [Socket.IO]()
 makes it possible to make real-time bidirectional event-vased easy writable socket connections. Cross-browser and available on every
