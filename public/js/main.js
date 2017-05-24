@@ -94,7 +94,7 @@
 
         console.log(users);
 
-        if(usersList !== null){
+        if(usersList !== null) {
             console.log(typeof usersList.innerHTML)
             usersList.innerHTML = "";
 
@@ -118,6 +118,7 @@
         }
     });
 
+
     // console.log('stil works');
 
 })();
@@ -135,9 +136,10 @@
     var newAlbum = [];
 
     if(typeof thisUser === 'undefined'){
-        console.log('no usertttt')
+        console.log('no usertttt');
         return;
     }
+
     var socket = io.connect('/'+thisUser);
     socket.on('event_1', function(albums) {
 
@@ -195,35 +197,12 @@
                     this.childNodes[0].classList.toggle('hidden');
                 });
 
-
-                // console.log(album);
-
                 userPlaylist.appendChild(album);
+
             }
         }
 
         oldAlbum = newAlbum;
     });
-
-})();
-
-
-// playlist onclick fold
-(function () {
-
-    // var list_items = document.getElementById('play-lists').getElementsByTagName('li');
-    // console.log(document.getElementById('play-lists').children.length);
-    // console.log(list_items.length);
-    //
-    // for (i = 0; i < list_items.length; i++) {
-    //
-    // }
-
-    function fold() {
-        console.log('workworkworkwork')
-        console.log('workworkworkwork')
-        console.log('workworkworkwork')
-        console.log('workworkworkwork')
-    }
 
 })();

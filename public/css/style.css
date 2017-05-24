@@ -169,6 +169,11 @@ form {
     font-size: 1.8rem;
 }
 
+.center {
+    text-align: center;
+    max-width: none;
+}
+
 #user-search-input {
     color: white;
     background-color: #380078;
@@ -193,6 +198,11 @@ form {
     text-decoration: none;
     font-weight: 300;
     transition: 300ms;
+}
+
+.btn--login {
+    width: 5rem;
+    margin: 0 auto;
 }
 
 .btn:hover {

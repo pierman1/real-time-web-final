@@ -15,7 +15,7 @@
     <div class="container--content">
 
         <div class="jumbotron">
-            <h1><%= name %></h1>
+            <h1><%= thisUser %>'s playlist:  <%= name %></h1>
 
             <ul class="following-artists">
                 <% for (var i=0; i < tracks.length; i++) { %>
@@ -40,9 +40,10 @@
 
     </div>
 </main>
+<script>var thisUser = '<%= thisUser %>';</script>
 
 <footer>
-    <% include ../partials/footer %>
+    <% include ../partials/footer-user-list %>
 </footer>
 
 </body>

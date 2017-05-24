@@ -5,11 +5,28 @@
 
 -------------
 
+## Table of contents
+
+- [1. Project](#1-project)
+- [2. Process](#process)
+- [3. How does it work?](#how)
+- [4. Results](#results)
+- [5. Tooling](#tooling)
+- [6. Requests](#requests)
+- [7. Socket events](#socket)
+- [8. Instructions](#instructions)
+- [9. Offline](#offline)
+- [10. Feature list](#features)
+- [11. Wishlist](#wish)
+
+------------------------------
+
+
 **Deployed app:**
 
 https://spotify-share-playlist.herokuapp.com/
 
-### Project
+### 1 Project
 
 By using the Spotify API, I made it possible to share your playlists real-time with each other
 same with your artists. This allows the user to stay up to date with their friends music the new playlists of his or her friends.
@@ -30,7 +47,7 @@ de Spotify-API. Omdat het hier ook nodig was om Oauth te gebruiken heb ik hier v
 Omdat het allemaal een beetje kortdag was ben ik gelijk van start gegaan zonder goed na te denken over mijn concept, hierdoor had ik niet een duidelijk 
 beeld van wat het zou moeten zijn.
 
-#### Hoe werkt het
+#### How does it work?
 
 - The user logs in with his/her spotify account (OAuth)
 - The user sees a unique view of her account (username, spotify-URI)
@@ -41,9 +58,12 @@ beeld van wat het zou moeten zijn.
 - This playlist is updated real-time by polling every 3 seconds.
 
 
-#### Resultaten
+### Results
 
 #### Tooling
+
+Used packages:
+
 
 *  [Session-storage]()
 *  [Socket.io](https://socket.io/)

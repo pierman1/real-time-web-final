@@ -236,13 +236,14 @@ app.get('/playlist/:id', function(req, res) {
         url: 'https://api.spotify.com/v1/users/spotify/playlists/' + req.params.id,
         headers: { 'Authorization': 'Bearer ' + access_token },
         json: true
-    }
+    };
 
     request.get(options, function(error, response, body) {
 
             res.locals.name          = body.name;
             // res.locals.description   = body.description;
             res.locals.tracks        = body.tracks.items;
+            res.locals.thisUser          = 'Spotify';
 
             res.render('pages/song-list');
 
@@ -269,9 +270,8 @@ app.get('/user/:id', function (req, res) {
     setInterval(function(){
 
         request.get(options, function(error, response, body) {
-0
+
             var albums = body.items;
-            //used for magic.  Unicorns are loading data to client!
             /*
             emits 'event_1' to client where user is logged in:
             -req.params.id = user_ID
@@ -302,51 +302,57 @@ app.get('/user/:id', function (req, res) {
 
 app.get('/user/:id/:list', function (req, res) {
 
-    // res.redirect(404, '/404');
-
-    // console.log(req.params.id);
-    // console.log(req.params.list);
-    // console.log(req);
-
     var access_token = req.session.user.acces_token;
 
     var options = {
         url: 'https://api.spotify.com/v1/users/' + req.params.id + '/playlists/' + req.params.list,
         headers: { 'Authorization': 'Bearer ' + access_token },
         json: true
-    }
+    };
 
-    console.log(options.url);
+    setInterval(function(){
+
+        request.get(options, function(error, response, body) {
+
+            console.log('woeha');
+
+            //used for magic.  Unicorns are loading data to client!
+            /*
+             emits 'event_1' to client where user is logged in:
+             -req.params.id = user_ID
+             -event_1 = socket key name that refers to function on the client JS/IO
+             */
+            io.of('/' + req.params.id + '/' + req.params.list).emit('list_update', body);
+
+        });
+
+    }, 3000);
+
+
+    // console.log(options.url);
 
     request.get(options, function(error, response, body) {
-
-        // console.log(response.body.error.status);
-
-        // console.log(body)
-        //
-        // console.log(body.tracks);
-        // console.log(body.tracks.items);
-        //
-        // // if (body.tracks) {
-        //
-        // console.log('////////////////////////');
-        // console.log(body);
 
         res.locals.name          = body.name;
         // res.locals.description   = body.description;
         res.locals.tracks        = body.tracks.items;
+        res.locals.thisUser      = req.params.id;
 
         res.render('pages/song-list');
 
-        // } else {
-
-        //     console.log('so its smaller');
-        //
-        //     return;
-        //
-        // }
-
     });
+
+    // Todo: update list with socket
+
+    // request.get(options, function(error, response, body) {
+    //
+    //     // console.log(body.params);
+    //     io.of('/' + req.params.id + '/' + req.params.list).emit('list_update', body.items);
+    //
+    //     // res.locals.user = user;
+    //
+    // });
+
 
 });
 
